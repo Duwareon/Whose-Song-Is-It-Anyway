@@ -1,8 +1,16 @@
 #!/usr/bin/env python3
+import re
+
 def URLtoURI(url):
-    if(url.find(':') != -1):
-        return False
-    #convert to URI here
+    url = str(url)
+    if (url.find(".com") != -1):
+        choppedurl = url[url.find("spotify"):]
+        choppederurl = re.sub('(.com)', '', choppedurl)
+        choppedesturl = re.sub('/', ':', choppederurl)
+        choppedesterurl = choppedesturl[:choppedesturl.find("?")]
+        return choppedesterurl
+    else:
+        return url
    
 class Songlink():
     def __init__(self, link, owner):
