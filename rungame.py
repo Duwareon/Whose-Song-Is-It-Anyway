@@ -19,8 +19,8 @@ for row in range(2, ws.max_row+1):
             ownername = ws[cell_name].value
         else:
             x = ws[cell_name].value
-            if(type(ws[cell_name].value) == int):
-               x = str(ws[cell_name].value) + 'a'
+            #if(type(ws[cell_name].value) == int):
+            #   x = str(ws[cell_name].value) + 'a'
             playlist.append(Songlink(URLtoURI(x), ownername))
 
 # remove duplicates and shuffle
@@ -51,12 +51,14 @@ for x in playlist:
         system("./sp play")
 
     if command == "n":
+        songuri = x.link
         iter += 1
         print(iter)
-        songuri = x.link
-        print(songuri)
+        
+        print("playing \"{}\"".format(songuri))
         system("./sp open {}".format(songuri))
-        input("Press Enter to see who submitted the song.")
+        
+        input("Press Enter to see who submitted the song.") 
         print(x.owner)
 
     if command == "q":
