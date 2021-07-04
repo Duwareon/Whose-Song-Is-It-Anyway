@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-#playerctl open spotify:track:1NM2qI63ylqg62yxpEvTXu
 print ("Starting Game...")
 
 from uriformat import *
@@ -35,7 +34,9 @@ while True:
         print(songNum+1)
         print(playlist[songNum].getLink())
         system("./sp open {}".format(playlist[songNum].getLink()))
-        songNum+=1
+        input("Press Enter to see who submitted the song.")
+        print(playlist[songNum].getOwner())
+        songNum = songNum + 1
 
     if command == "q":
         break
