@@ -17,8 +17,11 @@ class Songlink():
         self.link = link
         self.owner = owner
 
-    def getLink(self):
-        return self.link
+    #def getLink(self):
+        #return self.link
 
-    def getOwner(self):
-        return self.owner
+    #def getOwner(self):
+        #return self.owner
+
+    def printData(self):
+        print(self.link, self.owner, sep = ', ')

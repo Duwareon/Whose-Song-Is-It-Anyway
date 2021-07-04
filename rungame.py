@@ -6,6 +6,7 @@ import openpyxl as xl
 from os import system
 from random import shuffle
 
+# load the spreadsheet
 wb = xl.load_workbook(filename = "songlist.xlsx")
 ws = wb["Form Responses 1"]
 
@@ -22,24 +23,42 @@ for row in range(2, ws.max_row+1):
                x = str(ws[cell_name].value) + 'a'
             playlist.append(Songlink(URLtoURI(x), ownername))
 
+# remove duplicates and shuffle
+for x in playlist:
+    for y in playlist:
+        #x.printData()
+        #y.printData()
+        if (x is y):
+            pass
+        elif(x.link == y.link):
+            tempowner = y.owner
+            playlist.remove(y)
+            print("duplicate removed from {}".format(tempowner))
+            if(x.owner != y.owner):
+                x.owner = x.owner + " & {}".format(tempowner)
+            
+#for x in playlist:
+#    x.printData()
+    
+shuffle(playlist)
 shuffle(playlist)
 
-songNum = 0
-while True:
+iter = 0
+# run the game
+for x in playlist:
     command = input("(p)ause, (n)ext song, or (q)uit: ")
     if command == "p":
         system("./sp play")
 
     if command == "n":
-        print(songNum+1)
-        print(playlist[songNum].getLink())
-        system("./sp open {}".format(playlist[songNum].getLink()))
+        iter += 1
+        print(iter)
+        songuri = x.link
+        print(songuri)
+        system("./sp open {}".format(songuri))
         input("Press Enter to see who submitted the song.")
-        print(playlist[songNum].getOwner())
-        songNum = songNum + 1
+        print(x.owner)
 
     if command == "q":
         break
 
-for i in range(0, len(playlist)):
-    print(playlist[i].getLink(), playlist[i].getOwner())
