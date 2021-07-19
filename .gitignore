@@ -140,3 +140,5 @@ cython_debug/
 # Emacs buffers
 *.~*
 *~
+
+duplicate.py #a script I wrote to duplicate questions on the polling site I use
