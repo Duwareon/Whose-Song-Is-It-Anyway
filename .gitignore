@@ -142,3 +142,5 @@ cython_debug/
 *~
 
 duplicate.py #a script I wrote to duplicate questions on the polling site I use
+spotify_api_keys.env
+makeplaylist.py #hidden because it has my api keys in it
